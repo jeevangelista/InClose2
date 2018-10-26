@@ -8,6 +8,7 @@ setup(
   include_package_data=True,
   long_description=open('README.md', 'r').read(),
   install_requires=[
-    'bitarray==0.8.3'
+    'bitarray==0.8.3',
+    'anytree==2.4.3'
   ],
 )

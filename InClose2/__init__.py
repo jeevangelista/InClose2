@@ -1,5 +1,5 @@
 from bitarray import bitarray
-
+from anytree import Node, LevelOrderGroupIter
 
 
 class InClose2:
@@ -32,7 +32,7 @@ class InClose2:
     return bit_matrix
 
 
-  def InClose2(self, r, y, bit_matrix, key_list):
+  def InClose2(self, r, y, bit_matrix, key_list, parent):
     jchildren = []
     rchildren = []
     for j in range(y,len(bit_matrix)):
@@ -50,7 +50,8 @@ class InClose2:
             self.intents.append(bitarray([False]*len(key_list)))
             self.rnew += 1
     for k in range(0,len(jchildren)):
-      self.InClose2(rchildren[k], jchildren[k] + 1, bit_matrix, key_list)
+      child = Node(rchildren[k], parent=parent)
+      self.InClose2(rchildren[k], jchildren[k] + 1, bit_matrix, key_list, child)
 
 
   def IsCanonical(self, r, j, new_extent, bit_matrix):
@@ -68,7 +69,7 @@ class InClose2:
     self.intents.append(bitarray([False]*len(key_list)))
     self.intents.append(bitarray([False]*len(key_list)))
     bit_matrix = self.process_matrix_to_bitarray(key_list, matrix)
-    return bit_matrix
+    return bit_matrix, Node(r)
 
 
   def process_output(self, key_list):
