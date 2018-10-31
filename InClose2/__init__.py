@@ -41,7 +41,7 @@ class InClose2:
         if new_extent == self.extents[r]:
           self.intents[r][j] = [True]
         else:
-          if self.IsCanonical(r, j, new_extent, bit_matrix):
+          if new_extent.any() and self.IsCanonical(r, j, new_extent, bit_matrix):
             self.extents.append(new_extent)
             jchildren.append(j)
             rchildren.append(self.rnew)
