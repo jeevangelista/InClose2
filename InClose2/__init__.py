@@ -32,6 +32,33 @@ class InClose2:
     return bit_matrix
 
 
+  def count_true(bitarr):
+    counts = 0
+    for i in bitarr:
+        if i:
+            counts+=1
+    return counts
+
+  def get_counts_per_key(key_list, bit_matrix):
+    bit_key_dict = {}
+    bit_key_counts_dict = {}
+
+    for i in range(len(key_list)):
+        bit_key_dict[key_list[i]] = bit_matrix[i]
+    
+    for k,v in bit_key_dict.items():
+        bit_key_counts_dict[k] = count_true(v)
+    return bit_key_counts_dict
+
+
+  def sort_bitmatrix(bit_key_counts_dict, bit_key_dict):
+    sorted_keys_by_counts = [i[0] for i in sorted(bit_key_counts_dict.items(), key=lambda kv: kv[1], reverse=True)]
+    bit_matrix_sorted = []
+    for i in sorted_keys_by_counts:
+        bit_matrix_sorted.append(bit_key_dict[i])
+    return sorted_keys_by_counts, bit_matrix_sorted
+
+
   def InClose2(self, r, y, bit_matrix, key_list, parent):
     jchildren = []
     rchildren = []
