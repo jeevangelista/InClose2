@@ -48,10 +48,10 @@ class InClose2:
     
     for k,v in bit_key_dict.items():
         bit_key_counts_dict[k] = count_true(v)
-    return bit_key_counts_dict
+    return bit_key_dict, bit_key_counts_dict
 
 
-  def sort_bitmatrix(bit_key_counts_dict, bit_key_dict):
+  def sort_bitmatrix(bit_key_dict, bit_key_counts_dict):
     sorted_keys_by_counts = [i[0] for i in sorted(bit_key_counts_dict.items(), key=lambda kv: kv[1], reverse=True)]
     bit_matrix_sorted = []
     for i in sorted_keys_by_counts:
