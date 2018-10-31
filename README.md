@@ -21,6 +21,14 @@ matrix = [key_list[0:4] + [key_list[6]],
           key_list[0:2] + [key_list[5]],
           key_list[0:3] + key_list[5:7]
          ] 
-bit_matrix, parent = inclose.initialize(key_list, matrix)
+bit_matrix, root = inclose.initialize(key_list, matrix)
+# Sort if you want
+bit_key_dict, bit_key_counts_dict = get_counts_per_key(key_list, bit_matrix)
+sorted_keys_by_counts, bit_matrix_sorted = sort_bitmatrix(bit_key_dict, bit_key_counts_dict)
+
+# Run it!
+inclose.InClose2(0,0,bit_matrix_sorted, sorted_keys_by_counts, root)
+
+# Get results
 result = inclose.process_output(key_list)
 ```
