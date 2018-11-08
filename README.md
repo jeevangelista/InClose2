@@ -1,7 +1,7 @@
 # InClose2
 
 ### Setup
-To install dependencies:
+To install package + dependencies:
 ```bash
 cd /PATH/TO/OUTER/InClose2
 pip install -e .
